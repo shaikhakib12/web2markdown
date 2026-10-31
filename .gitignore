@@ -19,11 +19,14 @@ Thumbs.db
 *.swo
 
 # Build & Archives
-dist/
 build/
-*.zip
 *.crx
 *.pem
+
+# Allow release distribution archives
+!dist/
+!dist/pagescribe-v1.0.0.zip
+!dist/RELEASE_INFO.json
 
 # Testing coverage
 coverage/
