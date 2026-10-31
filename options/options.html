@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageScribe - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body class="theme-system">
+  <div class="settings-wrapper">
+    <!-- Header -->
+    <header class="settings-header">
+      <div class="header-brand">
+        <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <div class="header-text">
+          <h1>PageScribe Settings</h1>
+          <p class="tagline">Configure your text-only Markdown conversion preferences</p>
+        </div>
+      </div>
+      <div class="header-badge">v1.0.0 &bull; Open Source</div>
+    </header>
+
+    <!-- Save Notification -->
+    <div id="statusBanner" class="status-banner hidden" role="status">
+      <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="statusMessage">Settings saved successfully.</span>
+    </div>
+
+    <!-- Settings Form -->
+    <form id="settingsForm" class="settings-form">
+      
+      <!-- Section: Extraction Mode -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Extraction Strategy
+        </h2>
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="extractionMode" class="setting-label">Default Extraction Mode</label>
+            <p class="setting-desc">Choose which extraction mode is selected by default when PageScribe opens.</p>
+          </div>
+          <div class="setting-control">
+            <select id="extractionMode" class="form-select">
+              <option value="article">Article Mode (Mozilla Readability)</option>
+              <option value="fulltext">Full Text Mode (Clean Visible Text)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Metadata & Headers -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="9" x2="20" y2="9"></line>
+            <line x1="4" y1="15" x2="20" y2="15"></line>
+            <line x1="10" y1="3" x2="8" y2="21"></line>
+            <line x1="16" y1="3" x2="14" y2="21"></line>
+          </svg>
+          Document Header & Metadata
+        </h2>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="includeTitle" class="setting-label">Include Webpage Title</label>
+            <p class="setting-desc">Prepends the webpage title as an H1 heading at the top of the Markdown document.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="includeTitle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="includeSourceUrl" class="setting-label">Include Source URL</label>
+            <p class="setting-desc">Adds a blockquote header with the original webpage URL for attribution and study notes.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="includeSourceUrl">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="includeTimestamp" class="setting-label">Include Extraction Timestamp</label>
+            <p class="setting-desc">Appends an ISO timestamp indicating when the text was captured.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="includeTimestamp">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Formatting Rules -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          Markdown Formatting Rules
+        </h2>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="preserveHyperlinks" class="setting-label">Preserve Hyperlinks</label>
+            <p class="setting-desc">Convert HTML anchors to Markdown links ([text](url)). When disabled, only the plain link text is kept.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="preserveHyperlinks">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="preserveTables" class="setting-label">Preserve Tables</label>
+            <p class="setting-desc">Converts HTML tables into GitHub Flavored Markdown (GFM) tables.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="preserveTables">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="preserveCodeBlocks" class="setting-label">Preserve Code Blocks & Syntax</label>
+            <p class="setting-desc">Retains fenced code blocks (```language) and inline code (`code`).</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="preserveCodeBlocks">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="removeBlankLines" class="setting-label">Remove Excessive Blank Lines</label>
+            <p class="setting-desc">Collapses multiple consecutive empty lines to maintain clean, readable Markdown.</p>
+          </div>
+          <div class="setting-control">
+            <label class="toggle-switch">
+              <input type="checkbox" id="removeBlankLines">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Interface Preferences -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 10 10v0a10 10 0 0 1-10 10V2z"></path>
+          </svg>
+          Appearance & Defaults
+        </h2>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="previewMode" class="setting-label">Default Popup View</label>
+            <p class="setting-desc">Select which tab is displayed first upon conversion.</p>
+          </div>
+          <div class="setting-control">
+            <select id="previewMode" class="form-select">
+              <option value="preview">Rendered Preview</option>
+              <option value="raw">Raw Markdown</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="themeSelect" class="setting-label">Theme Preference</label>
+            <p class="setting-desc">Choose between System theme, Light theme, or Dark theme.</p>
+          </div>
+          <div class="setting-control">
+            <select id="themeSelect" class="form-select">
+              <option value="system">Follow System Theme</option>
+              <option value="light">Light Theme</option>
+              <option value="dark">Dark Theme</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Buttons -->
+      <div class="form-actions">
+        <button type="button" id="resetBtn" class="btn btn-secondary">Reset to Defaults</button>
+        <button type="submit" id="saveBtn" class="btn btn-primary">Save Settings</button>
+      </div>
+    </form>
+
+    <!-- Footer Privacy Callout -->
+    <footer class="settings-footer">
+      <p>PageScribe operates <strong>100% locally</strong> in your browser. No web requests, external AI APIs, or tracking ever occur.</p>
+      <div class="footer-links">
+        <a href="https://github.com/pagescribe/pagescribe" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <span>&bull;</span>
+        <a href="../PRIVACY.md" target="_blank">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="../LICENSE" target="_blank">MIT License</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../scripts/converter.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
