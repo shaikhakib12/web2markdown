@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Turn any webpage into clean, text-only Markdown with one click. Privacy-first, 100% local, no images, ads, or trackers.",
   "author": "PageScribe Contributors",
-  "homepage_url": "https://github.com/pagescribe/pagescribe",
+  "homepage_url": "https://github.com/shaikhakib12/web2markdown",
   "permissions": [
     "activeTab",
     "scripting",

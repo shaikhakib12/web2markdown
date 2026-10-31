@@ -121,8 +121,8 @@ You can install PageScribe directly into Chrome in less than 60 seconds:
 
 1. **Clone or Download** this repository:
    ```bash
-   git clone https://github.com/pagescribe/pagescribe.git
-   cd pagescribe
+   git clone https://github.com/shaikhakib12/web2markdown.git
+   cd web2markdown
    ```
    *(Or download and extract the ZIP file from GitHub).*
 
@@ -189,6 +189,18 @@ pagescribe/
 │   ├── extraction.test.js     # Readability, full text, and cleaner tests
 │   ├── filename.test.js       # Title slugification and sanitization tests
 │   └── sanitizer.test.js      # XSS protection and preview rendering tests
+│
+├── store-assets/              # Chrome Web Store graphics & listing metadata
+│   ├── STORE_LISTING.md       # Store metadata, description & permissions declarations
+│   ├── PUBLISHING_CHECKLIST.md# Step-by-step developer submission guide
+│   ├── store-icon-128.png     # 128x128 store icon
+│   ├── promo-small-440x280.png# 440x280 small promo tile
+│   ├── promo-marquee-1400x560.png # 1400x560 marquee promo tile
+│   └── screenshot-*.png       # 1280x800 high-res store screenshots
+│
+├── dist/                      # Distribution artifacts
+│   ├── pagescribe-v1.0.0.zip  # Release-ready package for Chrome Web Store
+│   └── RELEASE_INFO.json      # Checksum, version, and file manifest metadata
 │
 ├── .github/                   # GitHub templates
 │   ├── ISSUE_TEMPLATE/
@@ -260,17 +272,26 @@ npm test
 
 ---
 
-## Chrome Web Store Preparation
+## Chrome Web Store Preparation & Distribution
 
-When preparing PageScribe for distribution on the Chrome Web Store:
-1. Ensure all tests pass (`npm test`).
-2. Package the extension (excluding `node_modules` and tests):
+PageScribe includes automated release packaging and pre-formatted store assets:
+
+1. **Verify Extension Compliance:**
    ```bash
-   git archive -o pagescribe.zip HEAD
+   npm run verify
    ```
-3. Upload `pagescribe.zip` to the [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole).
-4. Fill out the single-purpose description: *"Turn any webpage into clean, text-only Markdown with one click."*
-5. Declare the permissions justifications as outlined in [PRIVACY.md](PRIVACY.md).
+   *Validates Manifest V3 compliance, icons, file paths, and local dependency integrity.*
+
+2. **Build Distribution Package:**
+   ```bash
+   npm run package
+   ```
+   *Generates `dist/pagescribe-v1.0.0.zip` ready for upload to the Chrome Developer Dashboard.*
+
+3. **Store Listing & Review Checklist:**
+   * Review metadata and permission justifications in [store-assets/STORE_LISTING.md](store-assets/STORE_LISTING.md).
+   * Follow the step-by-step submission guide in [store-assets/PUBLISHING_CHECKLIST.md](store-assets/PUBLISHING_CHECKLIST.md).
+   * Ready-to-upload store icon (128x128), promo tiles (440x280, 1400x560), and screenshots (1280x800) are located in `store-assets/`.
 
 ---
 

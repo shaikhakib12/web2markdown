@@ -67,11 +67,11 @@ PageScribe requests only the minimum necessary permissions required for its func
 ## 6. Open Source Transparency
 
 PageScribe is free and open-source software under the MIT License. The complete source code is publicly accessible on GitHub for auditing, inspection, and verification:
-[https://github.com/pagescribe/pagescribe](https://github.com/pagescribe/pagescribe)
+[https://github.com/shaikhakib12/web2markdown](https://github.com/shaikhakib12/web2markdown)
 
 ---
 
 ## 7. Contact & Security Reports
 
 If you discover a security concern or have questions regarding our privacy practices, please open an issue on our GitHub repository:
-[https://github.com/pagescribe/pagescribe/issues](https://github.com/pagescribe/pagescribe/issues)
+[https://github.com/shaikhakib12/web2markdown/issues](https://github.com/shaikhakib12/web2markdown/issues)

@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "Turn any webpage into clean, text-only Markdown. Privacy-first, local Chrome Extension.",
   "main": "scripts/converter.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaikhakib12/web2markdown.git"
+  },
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "build:libs": "node scripts/bundle-libs.js"
+    "build:libs": "node scripts/bundle-libs.js",
+    "build:assets": "node scripts/generate-store-assets.js",
+    "verify": "node scripts/verify-manifest.js",
+    "package": "node scripts/package-extension.js"
   },
   "keywords": [
     "chrome-extension",
@@ -21,8 +28,9 @@
   "license": "MIT",
   "devDependencies": {
     "@mozilla/readability": "^0.6.0",
+    "archiver": "^8.0.0",
+    "jsdom": "^26.0.0",
     "turndown": "^7.2.4",
-    "turndown-plugin-gfm": "^1.0.2",
-    "jsdom": "^26.0.0"
+    "turndown-plugin-gfm": "^1.0.2"
   }
 }
